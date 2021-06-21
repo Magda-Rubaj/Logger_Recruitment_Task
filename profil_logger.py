@@ -1,23 +1,38 @@
+from json_handler import JsonHandler
+from log_entry import LogEntry
+from datetime import datetime
+
 
 class ProfilLogger(object):
     
     def __init__(self, handlers) -> None:
-        pass
-
-    def info(msg: str) -> None:
-        pass
+        self.handlers = handlers
     
-    def warning(msg: str) -> None:
-        pass
+    def _log(self, msg: str, level: str) -> None:
+        date = datetime.now()
+        new_log = LogEntry(date, level, msg)
+        for handler in self.handlers:
+            handler.save(new_log)
 
-    def critical(msg: str) -> None:
-        pass
+    def info(self, msg: str) -> None:
+        level = "INFO"
+        self._log(msg, level)
+
+    def warning(self, msg: str) -> None:
+        level = "WARNING"
+        self._log(msg, level)
+
+    def critical(self, msg: str) -> None:
+        level = "CRITICAL"
+        self._log(msg, level)
         
-    def error(msg: str) -> None:
-        pass
+    def error(self, msg: str) -> None:
+        level = "ERROR"
+        self._log(msg, level)
 
-    def debug(msg: str) -> None:
-        pass
+    def debug(self, msg: str) -> None:
+        level = "DEBUG"
+        self._log(msg, level)
 
-    def set_log_level(msg: str) -> None:
+    def set_log_level(self, msg: str) -> None:
         pass

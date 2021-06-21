@@ -3,8 +3,9 @@ from abc import ABC, abstractmethod
 
 class Handler(ABC):
 
-    def __init__(self) -> None:
+    def __init__(self, file: str) -> None:
         super().__init__()
+        self.file = file
 
     @abstractmethod
     def save(self):
@@ -13,4 +14,3 @@ class Handler(ABC):
     @abstractmethod
     def retrieve(self):
         pass
-    
