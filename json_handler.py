@@ -15,10 +15,8 @@ class JsonHandler(Handler):
             else:
                 logs = json.load(f)
         logs.append(log.__dict__)
-        with open(self.file, 'r+') as f:
+        with open(self.file, 'w+') as f:
             json.dump(logs, f)
-
-
 
     def retrieve(self):
         super().retrieve()

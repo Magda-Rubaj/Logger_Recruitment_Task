@@ -7,3 +7,6 @@ class LogEntry(object):
         self.date = date.__str__()
         self.level = level
         self.msg = msg
+    
+    def get_row(self):
+        return [self.date, self.level, self.msg]
