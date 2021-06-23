@@ -1,13 +1,12 @@
-from json_handler import JsonHandler
-from log_entry import LogEntry
 from datetime import datetime
+from log_entry import LogEntry
 
 
 class ProfilLogger(object):
-    
+
     def __init__(self, handlers) -> None:
         self.handlers = handlers
-    
+
     def _log(self, msg: str, level: str) -> None:
         date = datetime.now()
         new_log = LogEntry(date, level, msg)
@@ -25,7 +24,7 @@ class ProfilLogger(object):
     def critical(self, msg: str) -> None:
         level = "CRITICAL"
         self._log(msg, level)
-        
+
     def error(self, msg: str) -> None:
         level = "ERROR"
         self._log(msg, level)

@@ -10,17 +10,20 @@ class JsonHandler(Handler):
 
     def save(self, log) -> None:
         super().save()
-        with open(self.file, 'r+') as f:
-            if os. stat(self.file).st_size == 0:
+        if not os.path.exists(self.file):
+            with open(self.file, 'w+'):
                 logs = []
-            else:
-                logs = json.load(f)
+        else:
+            with open(self.file) as f:
+                content = f.read()
+                logs = json.loads(content)
+
         logs.append(log.__dict__)
-        with open(self.file, 'w+') as f:
+        with open(self.file, 'w') as f:
             json.dump(logs, f)
 
-    def retrieve(self) -> list[LogEntry]:
+    def retrieve(self):
         super().retrieve()
         with open(self.file, 'r') as f:
             logs = json.load(f)
-        return logs
+        return [list(d.values()) for d in logs]
