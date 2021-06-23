@@ -1,3 +1,4 @@
+from log_entry import LogEntry
 from handler import Handler
 import csv
 
@@ -12,5 +13,10 @@ class CSVHandler(Handler):
             writer = csv.writer(f)
             writer.writerow(log.get_row())
         
-    def retrieve(self):
+    def retrieve(self) -> list[LogEntry]:
         super().retrieve()
+        with open(self.file, 'r') as f:
+            reader = csv.reader(f)
+            logs = [entry for entry in reader]
+        return logs
+        
