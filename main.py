@@ -7,6 +7,6 @@ json_handler = JsonHandler("logs.json")
 csv_handler = CSVHandler("logs.csv")
 
 logger = ProfilLogger(handlers=[json_handler, csv_handler])
-logger.info("Some info message")
+logger.info("Some message")
 log_reader = ProfilLoggerReader(handler=json_handler)
-log_reader.find_by_text("info message")
+log_reader.find_by_regex("[a-g]{1} message")

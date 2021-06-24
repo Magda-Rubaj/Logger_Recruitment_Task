@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 from typing import Optional
 
@@ -20,13 +21,16 @@ class ProfilLoggerReader(object):
 
     def find_by_text(self, text: str, start_date: Optional[datetime] = None):
         all_logs = self.handler.retrieve()
-        print(all_logs)
         filtered_logs = [
-            log for log in all_logs if text in log[self.msg] and self._check_date(log[self.date], start_date)]
+            log for log in all_logs if text in log[self.msg]
+            and self._check_date(log[self.date], start_date)]
         print(filtered_logs)
 
-    def find_by_regex(self):
-        pass
+    def find_by_regex(self, regex: str, start_date: Optional[datetime] = None):
+        all_logs = self.handler.retrieve()
+        filtered_logs = [
+            log for log in all_logs if bool(re.search(regex, log[self.msg]))]
+        print(filtered_logs)
 
     def groupby_level(self):
         pass
