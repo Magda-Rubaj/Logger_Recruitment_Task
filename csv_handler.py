@@ -17,7 +17,6 @@ class CSVHandler(Handler):
         super().retrieve()
         with open(self.file, 'r') as f:
             reader = csv.reader(f)
-            logs = [entry for entry in reader]
-        print(logs)
+            logs = [LogEntry(**entry) for entry in reader]
         return logs
         

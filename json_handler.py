@@ -25,5 +25,5 @@ class JsonHandler(Handler):
     def retrieve(self):
         super().retrieve()
         with open(self.file, 'r') as f:
-            logs = json.load(f)
-        return [list(d.values()) for d in logs]
+            logs = json.load(f, object_hook=lambda d: LogEntry(**d))
+        return logs
