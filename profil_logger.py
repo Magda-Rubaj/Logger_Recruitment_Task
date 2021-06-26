@@ -8,7 +8,7 @@ class ProfilLogger(object):
         self.handlers = handlers
 
     def _log(self, msg: str, level: str) -> None:
-        date = datetime.now()
+        date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         new_log = LogEntry(date, level, msg)
         for handler in self.handlers:
             handler.save(new_log)
