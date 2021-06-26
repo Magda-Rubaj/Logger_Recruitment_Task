@@ -11,5 +11,8 @@ class LogEntry(object):
     def get_row(self):
         return [self.date, self.level, self.msg]
     
+    def get_month(self):
+        return datetime.strptime(self.date, '%Y-%m-%d %H:%M:%S').strftime('%B')
+        
     def __repr__(self) -> str:
         return "(date: {0}, level: {1}, msg: {2})".format(self.date, self.level, self.msg)
