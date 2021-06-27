@@ -1,9 +1,9 @@
-from csv_handler import CSVHandler
-from json_handler import JsonHandler
-from sql_handler import SQLHandler
-from file_handler import FileHandler
-from logger_reader import ProfilLoggerReader
-from profil_logger import ProfilLogger
+from logger.csv_handler import CSVHandler
+from logger.json_handler import JsonHandler
+from logger.sql_handler import SQLHandler
+from logger.file_handler import FileHandler
+from logger.logger_reader import ProfilLoggerReader
+from logger.profil_logger import ProfilLogger
 from datetime import datetime
 
 json_handler = JsonHandler("logs.json")
