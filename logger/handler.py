@@ -9,8 +9,8 @@ class Handler(ABC):
 
     @abstractmethod
     def save(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def retrieve(self):
-        pass
+        raise NotImplementedError

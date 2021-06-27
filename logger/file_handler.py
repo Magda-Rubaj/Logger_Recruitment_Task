@@ -1,7 +1,7 @@
 import pickle
 from typing import List
-from handler import Handler
-from log_entry import LogEntry
+from .handler import Handler
+from .log_entry import LogEntry
 
 
 class FileHandler(Handler):

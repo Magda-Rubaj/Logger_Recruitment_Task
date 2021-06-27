@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from itertools import groupby
 from typing import Dict, List, Optional
-from log_entry import LogEntry
+from .log_entry import LogEntry
 
 
 class ProfilLoggerReader(object):
