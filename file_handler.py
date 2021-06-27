@@ -11,10 +11,11 @@ class FileHandler(Handler):
     def save(self, log) -> None:
         with open(self.file, 'ab') as f:
             pickle.dump(log, f)
+
     def retrieve(self) -> List[LogEntry]:
         logs = []
         with open(self.file, 'rb') as f:
-            while 1:
+            while True:
                 try:
                     logs.append(pickle.load(f))
                 except EOFError:

@@ -1,13 +1,13 @@
+import sqlite3
+from typing import List
 from handler import Handler
 from log_entry import LogEntry
-from typing import List
-import sqlite3
 
 
 class SQLHandler(Handler):
     def __init__(self, file: str) -> None:
         super().__init__(file)
-    
+
     def _create_table(self, cursor) -> None:
         command = """CREATE TABLE IF NOT EXISTS logs(
             date text,
@@ -15,7 +15,7 @@ class SQLHandler(Handler):
             msg text
         );"""
         cursor.execute(command)
-    
+
     def save(self, log) -> None:
         create_logs = """INSERT INTO logs(date, level, msg)
                         VALUES(?, ?, ?)"""
@@ -34,5 +34,3 @@ class SQLHandler(Handler):
             cursor.execute(select)
             logs = [LogEntry(*entry) for entry in cursor]
         return logs
-
-
