@@ -1,5 +1,6 @@
 from log_entry import LogEntry
 from handler import Handler
+from typing import List
 import json
 import os
 
@@ -22,7 +23,7 @@ class JsonHandler(Handler):
         with open(self.file, 'w') as f:
             json.dump(logs, f)
 
-    def retrieve(self):
+    def retrieve(self) -> List[LogEntry]:
         super().retrieve()
         with open(self.file, 'r') as f:
             logs = json.load(f, object_hook=lambda d: LogEntry(**d))
