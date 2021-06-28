@@ -3,7 +3,7 @@ from .log_entry import LogEntry
 
 
 class ProfilLogger(object):
-    levels = ["INFO", "WARNING", "DEBUG", "CRITICAL", "ERROR"]
+    levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
     def __init__(self, handlers) -> None:
         self.handlers = handlers
@@ -12,7 +12,7 @@ class ProfilLogger(object):
     def _log(self, msg: str, level: str) -> None:
         date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(msg)
-        if self.levels.index(self.minimal_level) > self.levels.index(level):
+        if self.levels.index(self.minimal_level) <= self.levels.index(level):
             new_log = LogEntry(date, level, msg)
             for handler in self.handlers:
                 handler.save(new_log)
