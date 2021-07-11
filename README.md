@@ -1,4 +1,4 @@
-# Logger_Recruitment_Task - Magdalena Rubaj
+# Logger_Recruitment_Task 
 
 ## Installation
 
